@@ -1,68 +1,81 @@
 .container {
   display: grid;
-  grid-template-columns: 200px 1fr; /* Sidebar ocupa 200px, resto da página 1fr */
-  grid-template-rows: auto auto 1fr auto; /* Corrigido: auto para as alturas e 1fr para listas */
+  grid-template-columns: 280px 1fr; /* Sidebar ocupa 200px, resto da página 1fr */
+  grid-template-rows: auto auto 1fr auto;
   gap: 16px;
-  width: 100%;
-  min-width: 900px; /* Limita a largura da página */
-  height: 100vh; /* Ocupa toda a altura da tela */
+  min-width: 1200px;
   box-sizing: border-box;
   grid-template-areas:
     "sidebar search"
+    "sidebar usuario"
     "sidebar calories"
     "sidebar food-exercise"
-    "sidebar chart"; /* Definindo as áreas do grid */
+    "sidebar chart";
 }
 
 /* Estilização do Sidebar */
 .sidebar {
   grid-area: sidebar;
-  background-color: #333;
+  background-color: #33353f;
   color: #fff;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
-  height: 100%; /* Garantir que o sidebar vá até o final da tela */
+  border-radius: 8px;
 }
 
-.sidebar .logo {
-  padding: 20px;
-  font-size: 24px;
-}
-
-.sidebar nav ul {
-  list-style-type: none;
-  padding: 0;
-}
-
-.sidebar nav ul li {
-  margin: 10px 0;
-}
-
-.sidebar nav ul li a {
-  color: white;
-  text-decoration: none;
+.sidebar img.logo {
+  padding-top: 32px;
 }
 
 .sidebar footer {
   padding: 20px;
+  text-align: center;
 }
 
 /* Estilização da Barra de Pesquisa */
 .search-bar {
+  margin-top: 32px;
+  background-color: #2a2c34;
+  border-radius: 8px;
+  padding: 10px 16px;
   grid-area: search;
   display: flex;
   justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.search-bar img {
+  width: 24px;
+  height: 24px;
 }
 
 .search-bar input {
   width: 100%;
-  margin-top: 24px;
-  padding: 10px;
-  font-size: 16px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  color: #f5f5f5;
+  background-color: transparent;
+  font-size: 20px;
+  border: none;
+  outline: transparent;
+}
+
+.search-bar input::placeholder {
+  color: #f5f5f5;
+}
+
+.saudacao-usuario {
+  grid-area: usuario;
+  color: #f5f5f5;
+
+  & > h1 {
+    margin: 16px 0 0 0;
+  }
+
+  & > p {
+    margin: 8px 0 16px 0;
+  }
 }
 
 /* Estilização dos componentes de Calorias */
@@ -70,18 +83,32 @@
   grid-area: calories;
   display: flex;
   justify-content: space-between;
-  gap: 20px;
+  gap: 24px;
 }
 
 .calories-info div {
   flex: 1;
-  background-color: #eaeaea;
-  padding: 20px;
-  border-radius: 5px;
   text-align: center;
+
+  & > h2 {
+    font-size: 20px;
+    color: #f5f5f5;
+    background-color: #33353f;
+    border-radius: 24px 24px 0px 0px;
+    padding: 16px 75px;
+  }
+
+  & > p {
+    color: #7693ff;
+    font-size: 39px;
+    font-weight: 700;
+    background-color: #2a2c34;
+    padding: 60px 100px;
+    border-radius: 0px 0px 24px 24px;
+  }
 }
 
-.calories-info div > h3,
+.calories-info div > h2,
 .calories-info div > p {
   margin: 0;
 }
@@ -96,13 +123,51 @@
 .food-list,
 .exercise-list {
   flex: 1;
-  padding: 20px;
-  border-radius: 5px;
-  background-color: #ffebb5;
+  text-align: center;
+
+  & > h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #f5f5f5;
+    background-color: #33353f;
+    border-radius: 24px 24px 0px 0px;
+    padding: 16px 75px;
+    margin: 0;
+  }
+
+  & > div {
+    background-color: #2a2c34;
+    padding: 32px 16px;
+    border-radius: 0px 0px 24px 24px;
+
+    & > ul {
+      list-style: none;
+      color: #7693ff;
+      margin: 0;
+      padding-left: 0px;
+      padding-bottom: 24px;
+    }
+  }
+}
+
+.button {
+  background-color: transparent;
+  border: 1px solid #f5f5f5;
+  border-radius: 24px;
+  padding: 8px 24px;
+  color: #f5f5f5;
+  cursor: pointer;
 }
 
 .exercise-list {
-  background-color: #ffb5b5;
+  & > h2 {
+    font-size: 20px;
+    color: #f5f5f5;
+    background-color: #33353f;
+    border-radius: 24px 24px 0px 0px;
+    padding: 16px 75px;
+    margin: 0;
+  }
 }
 
 /* Estilo para o componente de ingestão de água */
@@ -132,8 +197,28 @@
 /* Estilo para o gráfico */
 .calorie-chart {
   grid-area: chart;
-  background-color: #eaeaea;
-  padding: 20px;
-  border-radius: 5px;
   text-align: center;
+
+  & > h2 {
+    font-size: 20px;
+    font-weight: 400;
+    color: #f5f5f5;
+    background-color: #33353f;
+    border-radius: 24px 24px 0px 0px;
+    padding: 16px 75px;
+    margin: 0;
+  }
+
+  & > div {
+    background-color: #2a2c34;
+    border-radius: 0px 0px 24px 24px;
+    display: flex;
+    justify-content: center;
+
+    & > .chart-area {
+      padding: 32px;
+      width: 50%;
+      height: 50%;
+    }
+  }
 }

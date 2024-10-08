@@ -1,13 +1,18 @@
+import Button from "../Button";
+
 const FoodList = () => {
-  const foods = ["Maçã", "Banana", "Arroz"]; // Exemplo de dados mockados
+  const foods = ["iFood", "Amazon Prime", "Gympass"];
   return (
     <div className="food-list">
-      <h2>Lista de Alimentos</h2>
-      <ul>
-        {foods.map((food, index) => (
-          <li key={index}>{food}</li>
-        ))}
-      </ul>
+      <h2>Movimentação financeira</h2>
+      <div>
+        <ul>
+          {foods.map((food, index) => (
+            <li key={index}>{food}</li>
+          ))}
+        </ul>
+        <Button>Adicionar transação</Button>
+      </div>
     </div>
   );
 };

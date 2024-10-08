@@ -1,9 +1,9 @@
 const TotalCalories = () => {
-  const totalCalories = 2000; // Exemplo
+  const totalCalories = 2000;
   return (
-    <div className="total-calories">
-      <h3>Calorias Totais</h3>
-      <p>{totalCalories} kcal</p>
+    <div>
+      <h2>Orçamento diário disponível</h2>
+      <p>R$ {totalCalories}</p>
     </div>
   );
 };

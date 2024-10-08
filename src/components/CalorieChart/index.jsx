@@ -3,25 +3,25 @@ import {
   CategoryScale,
   LinearScale,
   BarElement,
-  Title,
+  ArcElement,
   Tooltip,
   Legend,
 } from "chart.js";
-import { Bar } from "react-chartjs-2";
+import { Pie } from "react-chartjs-2";
 
 // Registrar os componentes necessários
 ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
   CategoryScale,
   LinearScale,
-  BarElement,
-  Title,
-  Tooltip,
-  Legend
+  BarElement
 );
 
 const CalorieChart = () => {
   const data = {
-    labels: ["Consumidas", "Queimadas", "Total"],
+    labels: ["Entradas", "Saídas", "Balanço"],
     datasets: [
       {
         label: "Calorias",
@@ -41,10 +41,23 @@ const CalorieChart = () => {
     ],
   };
 
+  const options = {
+    responsive: true,
+    plugins: {
+      legend: {
+        position: "right",
+      },
+    },
+  };
+
   return (
     <div className="calorie-chart">
-      <h3>Gráfico de Calorias Consumidas vs. Queimadas</h3>
-      <Bar data={data} />
+      <h2>Balanço financeiro</h2>
+      <div>
+        <div className="chart-area">
+          <Pie data={data} options={options} />
+        </div>
+      </div>
     </div>
   );
 };

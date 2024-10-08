@@ -1,5 +1,6 @@
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: "Work Sans", sans-serif;
+  font-optical-sizing: auto;
 }
 
 body {
@@ -7,5 +8,5 @@ body {
   padding: 0;
   display: flex;
   justify-content: center;
-  background-color: #f4f4f4;
+  background-color: #1c1d21;
 }
