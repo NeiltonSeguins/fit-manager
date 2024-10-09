@@ -1,6 +1,6 @@
 import logo from "../../assets/logo.png";
 
-const Sidebar = () => {
+const BarraLateral = () => {
   return (
     <aside className="sidebar">
       <img className="logo" src={logo} alt="Logotipo da poupeapp" />
@@ -10,4 +10,4 @@ const Sidebar = () => {
     </aside>
   );
 };
-export default Sidebar;
+export default BarraLateral;

@@ -1,6 +1,6 @@
 import searchIcon from "../../assets/search.png";
 
-const SearchBar = () => {
+const BarraPesquisa = () => {
   return (
     <label htmlFor="search" className="search-bar">
       <img src={searchIcon} alt="ícone de busca" />
@@ -9,4 +9,4 @@ const SearchBar = () => {
   );
 };
 
-export default SearchBar;
+export default BarraPesquisa;

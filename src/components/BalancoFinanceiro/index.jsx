@@ -19,7 +19,7 @@ ChartJS.register(
   BarElement
 );
 
-const CalorieChart = () => {
+const BalancoFinanceiro = () => {
   const data = {
     labels: ["Entradas", "Saídas", "Balanço"],
     datasets: [
@@ -51,7 +51,7 @@ const CalorieChart = () => {
   };
 
   return (
-    <div className="calorie-chart">
+    <div className="balanco-financeiro">
       <h2>Balanço financeiro</h2>
       <div>
         <div className="chart-area">
@@ -61,4 +61,4 @@ const CalorieChart = () => {
     </div>
   );
 };
-export default CalorieChart;
+export default BalancoFinanceiro;
