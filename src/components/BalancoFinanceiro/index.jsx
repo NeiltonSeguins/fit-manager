@@ -1,3 +1,6 @@
+import Cartao from "../Cartao";
+import CartaoCabecalho from "../Cartao/CartaoCabecalho";
+import CartaoCorpo from "../Cartao/CartaoCorpo";
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,6 +11,7 @@ import {
   Legend,
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
+import { AreaChart } from "./style";
 
 // Registrar os componentes necessários
 ChartJS.register(
@@ -51,14 +55,14 @@ const BalancoFinanceiro = () => {
   };
 
   return (
-    <div className="balanco-financeiro">
-      <h2>Balanço financeiro</h2>
-      <div>
-        <div className="chart-area">
+    <Cartao>
+      <CartaoCabecalho>Balanço financeiro</CartaoCabecalho>
+      <CartaoCorpo>
+        <AreaChart>
           <Pie data={data} options={options} />
-        </div>
-      </div>
-    </div>
+        </AreaChart>
+      </CartaoCorpo>
+    </Cartao>
   );
 };
 export default BalancoFinanceiro;

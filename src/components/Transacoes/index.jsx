@@ -1,24 +1,28 @@
-import { Botao, Transacao } from "..";
+import { Botao, Cartao, CartaoCabecalho, Transacao } from "..";
+import { Container, ListaMovimentacoes } from "../Contas/style";
 import MoneyIcon from "../Icones/MoneyIcon";
 
 const Transacoes = () => {
   const movimentacoes = [
+    { nome: "Bets", tipo: "receita", valor: "200,00", data: "10/10/2024" },
+    { nome: "iFood", tipo: "despesa", valor: "200,00", data: "10/10/2024" },
+    { nome: "Bets", tipo: "receita", valor: "200,00", data: "10/10/2024" },
   ];
   return (
-    <div className="lista-transacoes">
-      <h2>Movimentação financeira</h2>
-      <div>
-        <ul>
+    <Cartao>
+      <CartaoCabecalho>Movimentação financeira</CartaoCabecalho>
+      <Container>
+        <ListaMovimentacoes>
           {movimentacoes.map((movimentacao, index) => (
             <Transacao key={index} transacao={movimentacao} />
           ))}
-        </ul>
+        </ListaMovimentacoes>
         <Botao>
           <MoneyIcon />
           Adicionar transação
         </Botao>
-      </div>
-    </div>
+      </Container>
+    </Cartao>
   );
 };
 export default Transacoes;

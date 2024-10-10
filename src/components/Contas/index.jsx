@@ -1,24 +1,24 @@
-import { Botao, WalletIcon } from "..";
+import { Botao, Cartao, CartaoCabecalho, WalletIcon } from "..";
 import Conta from "./Conta";
+import { Container, ListaMovimentacoes } from "./style";
 
 const Contas = () => {
-  const contas = [
-  ];
+  const contas = [{ nome: "Bytebank", saldo: "15000,00" }];
   return (
-    <div className="lista-contas">
-      <h2>Minhas contas</h2>
-      <div>
-        <ul>
+    <Cartao>
+      <CartaoCabecalho>Minhas contas</CartaoCabecalho>
+      <Container>
+        <ListaMovimentacoes>
           {contas.map((conta, index) => (
             <Conta key={index} conta={conta} />
           ))}
-        </ul>
+        </ListaMovimentacoes>
         <Botao>
           <WalletIcon />
           Adicionar conta
         </Botao>
-      </div>
-    </div>
+      </Container>
+    </Cartao>
   );
 };
 export default Contas;

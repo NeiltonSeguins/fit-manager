@@ -1,13 +1,14 @@
 import logo from "../../assets/logo.png";
+import { Imagem, Rodape, Sidebar } from "./style";
 
 const BarraLateral = () => {
   return (
-    <aside className="sidebar">
-      <img className="logo" src={logo} alt="Logotipo da poupeapp" />
-      <footer>
+    <Sidebar>
+      <Imagem src={logo} alt="Logotipo da poupeapp" />
+      <Rodape>
         Desenvolvido por Alura. Projeto fictício sem fins comerciais.
-      </footer>
-    </aside>
+      </Rodape>
+    </Sidebar>
   );
 };
 export default BarraLateral;

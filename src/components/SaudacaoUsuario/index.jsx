@@ -1,9 +1,11 @@
+import { Usuario } from "./style";
+
 const SaudacaoUsuario = () => {
   return (
-    <div className="saudacao-usuario">
+    <Usuario>
       <h1>Olá, Neilton</h1>
       <p>Veja como estão suas finanças hoje.</p>
-    </div>
+    </Usuario>
   );
 };
 

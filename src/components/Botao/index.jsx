@@ -1,5 +1,7 @@
-const Button = ({ children }) => {
-  return <button className="button">{children}</button>;
+import { StyledButton } from "./style";
+
+const Botao = ({ children, variante }) => {
+  return <StyledButton $variante={variante}>{children}</StyledButton>;
 };
 
-export default Button;
+export default Botao;

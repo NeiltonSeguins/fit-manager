@@ -8,25 +8,26 @@ import {
   OrcamentoDiario,
   SaudacaoUsuario,
   Transacoes,
-} from "./components";
+} from "../../components";
+import { Container, Movimentacoes, Orcamento } from "./style";
 
-function App() {
+function Home() {
   return (
-    <div className="container">
+    <Container>
       <BarraLateral />
       <BarraPesquisa />
       <SaudacaoUsuario />
-      <section className="orcamento">
+      <Orcamento>
         <OrcamentoDiario />
         <MetaFinanceira />
-      </section>
-      <section className="movimentacoes-conta">
+      </Orcamento>
+      <Movimentacoes>
         <Transacoes />
         <Contas />
-      </section>
+      </Movimentacoes>
       <BalancoFinanceiro />
-    </div>
+    </Container>
   );
 }
 
-export default App;
+export default Home;

@@ -1,17 +1,18 @@
 import BankIcon from "../../Icones/BankIcon";
+import { ItemConta, SaldoConta, TituloConta } from "../style";
 
 const Conta = ({ conta }) => {
   return (
-    <li className="conta">
-      <div className="conta-titulo">
+    <ItemConta className="conta">
+      <TituloConta className="conta-titulo">
         <BankIcon />
         <h3>{conta.nome}</h3>
-      </div>
-      <div className="conta-saldo">
+      </TituloConta>
+      <SaldoConta className="conta-saldo">
         <p>Saldo</p>
         <span>R$ {conta.saldo}</span>
-      </div>
-    </li>
+      </SaldoConta>
+    </ItemConta>
   );
 };
 
