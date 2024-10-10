@@ -20,8 +20,10 @@ export const Corpo = styled.div`
   border-radius: 0px 0px var(--border-radius-l) var(--border-radius-l);
   display: flex;
   flex-direction: column;
+  justify-content: center;
   align-items: center;
   margin: 0;
+  min-height: 100px;
 `;
 
 export const Descricao = styled.div`

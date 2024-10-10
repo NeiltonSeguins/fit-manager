@@ -6,6 +6,10 @@ export const ItemTransacao = styled.li`
   align-items: center;
   padding-bottom: var(--padding-m);
   border-bottom: 1px solid var(--cor-neutra-medium);
+  margin-top: 24px;
+  &:nth-child(1) {
+    margin-top: 0;
+  }
 `;
 
 export const TituloTransacao = styled.div`

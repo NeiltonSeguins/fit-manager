@@ -15,3 +15,4 @@ export { default as Transacao } from "./Transacoes/Transacao";
 export { default as BankIcon } from "./Icones/BankIcon";
 export { default as WalletIcon } from "./Icones/WalletIcon";
 export { default as SearchIcon } from "./Icones/SearchIcon";
+export { default as PigIcon } from "./Icones/PigIcon";

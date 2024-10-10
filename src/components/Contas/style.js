@@ -15,7 +15,7 @@ export const ListaMovimentacoes = styled.ul`
   padding-left: 0px;
   padding-bottom: var(--padding-m);
   width: 100%;
-  max-height: 150px;
+  height: 200px;
   overflow: auto;
 
   &::-webkit-scrollbar {
