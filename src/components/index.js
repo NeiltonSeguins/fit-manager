@@ -8,6 +8,7 @@ export { default as Cartao } from "./Cartao";
 export { default as CartaoCabecalho } from "./Cartao/CartaoCabecalho";
 export { default as CartaoCorpo } from "./Cartao/CartaoCorpo";
 export { default as MetaFinanceira } from "./MetaFinanceira";
+export { default as Modal } from "./Modal";
 export { default as OrcamentoDiario } from "./OrcamentoDiario";
 export { default as SaudacaoUsuario } from "./SaudacaoUsuario";
 export { default as Transacoes } from "./Transacoes";
