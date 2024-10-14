@@ -37,6 +37,7 @@ const Cadastro = () => {
               <InputText type="text" name="renda" />
             </Fieldset>
             <Fieldset>
+              <Label>Selecione seu objetivo financeiro:</Label>
               <RadioGroup>
                 <RadioInput>
                   <input type="radio" name="objetivo" id="economizar" />

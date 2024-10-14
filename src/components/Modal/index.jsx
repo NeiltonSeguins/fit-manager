@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   ButtonGroup,
   CloseButton,
@@ -8,14 +8,47 @@ import {
 } from "./style";
 import Botao from "../Botao";
 
-const Modal = ({ icon, titulo, onClose, children }) => {
+const Modal = ({ icon, titulo, onClose, children, isOpen }) => {
+  const modalRef = useRef(null);
+
+  const escutadorTecla = useCallback(
+    (evento) => {
+      if (evento.key === "Escape") {
+        onClose();
+      }
+    },
+    [onClose]
+  );
+
+  const capturarFoco = useCallback((evento) => {
+    if (!modalRef.current?.contains(evento.target)) {
+      modalRef.current?.focus();
+    }
+  }, []);
+
+  useEffect(() => {
+    if (isOpen) {
+      document.addEventListener("keydown", escutadorTecla);
+      document.addEventListener("focusin", capturarFoco);
+
+      modalRef.current?.focus();
+    }
+
+    return () => {
+      document.removeEventListener("keydown", escutadorTecla);
+      document.removeEventListener("focusin", capturarFoco);
+    };
+  }, [isOpen, capturarFoco, escutadorTecla]);
+
   return (
-    <ModalOverlay>
-      <ModalContainer>
+    <ModalOverlay onClick={onClose}>
+      <ModalContainer open={isOpen} onClose={onclose} ref={modalRef}>
         <ModalHeader>
-          {icon}
-          {titulo}
-          <CloseButton onClick={onClose}>×</CloseButton>
+          <div>
+            {icon}
+            {titulo}
+          </div>
+          <CloseButton onClick={onClose}>x</CloseButton>
         </ModalHeader>
         {children}
         <ButtonGroup>

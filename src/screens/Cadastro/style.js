@@ -45,6 +45,7 @@ export const Form = styled.form`
 
 export const Fieldset = styled.fieldset`
   border: none;
+  text-align: start;
   padding: 0;
   margin-bottom: 20px;
 `;

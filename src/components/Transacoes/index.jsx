@@ -36,6 +36,7 @@ const Transacoes = () => {
           <Modal
             onClose={() => handleCloseModal()}
             titulo="Adicionar transação"
+            isOpen={isModalOpen}
             icon={<MoneyIcon />}
           >
             <Form>
@@ -50,6 +51,10 @@ const Transacoes = () => {
               <Fieldset>
                 <Label htmlFor="valor">Valor</Label>
                 <InputText type="text" id="valor" placeholder="R$ 500,00" />
+              </Fieldset>
+              <Fieldset>
+                <Label htmlFor="valor">Data</Label>
+                <InputText type="date" id="valor" placeholder="R$ 500,00" />
               </Fieldset>
               <Fieldset>
                 <Label htmlFor="categoria">Categoria</Label>

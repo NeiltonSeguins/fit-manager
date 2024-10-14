@@ -6,19 +6,21 @@ export const ModalOverlay = styled.div`
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(0, 0, 0, 0.6);
+  background-color: rgba(245, 245, 245, 0.5);
   display: flex;
   justify-content: center;
   align-items: center;
+  overflow: auto;
   z-index: 1000;
 `;
 
-export const ModalContainer = styled.div`
-  background-color: #1e1e1e;
-  border-radius: 10px;
-  padding: 30px;
+export const ModalContainer = styled.dialog`
+  background-color: var(--cor-neutra-dark);
+  border-radius: var(--border-radius-s);
+  border: none;
+  padding: var(--padding-m);
   width: 400px;
-  color: white;
+  color: var(--cor-neutra-light);
   position: relative;
   box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.5);
 `;
@@ -28,22 +30,31 @@ export const ModalHeader = styled.div`
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
+  font-size: var(--fonte-xl);
+  font-weight: 700;
+
+  & > div {
+    display: flex;
+    align-items: center;
+    gap: var(--gap-xs);
+
+    & > svg {
+      width: 32px;
+      height: 38px;
+    }
+  }
 `;
 
 export const CloseButton = styled.button`
   background: none;
   border: none;
-  color: white;
-  font-size: 1.5rem;
+  color: var(--cor-neutra-light);
+  font-size: var(--fonte-xl);
   cursor: pointer;
-
-  &:hover {
-    color: #4a90e2;
-  }
 `;
 
 export const ButtonGroup = styled.div`
   display: flex;
   justify-content: flex-end;
-  gap: 15px;
+  gap: var(--gap-s);
 `;
