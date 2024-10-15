@@ -6,8 +6,6 @@ import { PigIcon } from "..";
 import { TituloMetaFinanceira } from "./style";
 
 const MetaFinanceira = () => {
-  const valorInicial = 1000;
-  const saldoAtual = 700;
   return (
     <Cartao>
       <CartaoCabecalho>Progresso da meta financeira</CartaoCabecalho>
@@ -17,7 +15,7 @@ const MetaFinanceira = () => {
             <PigIcon />
             Economizar
           </TituloMetaFinanceira>
-          <BarraProgresso valorInicial={valorInicial} saldoAtual={saldoAtual} />
+          <BarraProgresso />
         </Descricao>
       </Corpo>
     </Cartao>

@@ -1,19 +1,25 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { BarraContainer, StyledBarraProgresso } from "../style";
+import { useSelector } from "react-redux";
+import { calcularProgressoMeta } from "../../../utils/index";
 
-const BarraProgresso = ({ saldoAtual, valorInicial }) => {
-  const [progresso, setProgresso] = useState(0);
+const BarraProgresso = () => {
+  const { orcamentoDiario, renda, objetivoFinanceiro } = useSelector(
+    (state) => state.usuario
+  );
 
-  useEffect(() => {
-    // Calcular o progresso com base no saldo atual e valor inicial
-    const calculoProgresso = Math.min((saldoAtual / valorInicial) * 100, 100);
-    setProgresso(calculoProgresso.toFixed(0));
-  }, [saldoAtual, valorInicial]);
+  console.log(orcamentoDiario, renda, objetivoFinanceiro);
+
+  const progressoMeta = calcularProgressoMeta(
+    orcamentoDiario,
+    renda,
+    objetivoFinanceiro
+  );
 
   return (
     <BarraContainer>
-      <StyledBarraProgresso $progresso={progresso}>
-        {progresso}%
+      <StyledBarraProgresso $progresso={progressoMeta}>
+        {progressoMeta}%
       </StyledBarraProgresso>
     </BarraContainer>
   );
