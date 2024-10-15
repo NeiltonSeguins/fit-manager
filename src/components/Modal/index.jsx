@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect, useRef } from "react";
+import React, { useCallback, useEffect } from "react";
 import {
   ButtonGroup,
   CloseButton,
@@ -8,9 +8,7 @@ import {
 } from "./style";
 import Botao from "../Botao";
 
-const Modal = ({ icon, titulo, onClose, children, isOpen }) => {
-  const modalRef = useRef(null);
-
+const Modal = ({ icon, titulo, onClose, children, isOpen, aoClicar }) => {
   const escutadorTecla = useCallback(
     (evento) => {
       if (evento.key === "Escape") {
@@ -20,29 +18,19 @@ const Modal = ({ icon, titulo, onClose, children, isOpen }) => {
     [onClose]
   );
 
-  const capturarFoco = useCallback((evento) => {
-    if (!modalRef.current?.contains(evento.target)) {
-      modalRef.current?.focus();
-    }
-  }, []);
-
   useEffect(() => {
     if (isOpen) {
       document.addEventListener("keydown", escutadorTecla);
-      document.addEventListener("focusin", capturarFoco);
-
-      modalRef.current?.focus();
     }
 
     return () => {
       document.removeEventListener("keydown", escutadorTecla);
-      document.removeEventListener("focusin", capturarFoco);
     };
-  }, [isOpen, capturarFoco, escutadorTecla]);
+  }, [isOpen, escutadorTecla]);
 
   return (
-    <ModalOverlay onClick={onClose}>
-      <ModalContainer open={isOpen} onClose={onclose} ref={modalRef}>
+    <ModalOverlay>
+      <ModalContainer open={isOpen} onClose={onclose}>
         <ModalHeader>
           <div>
             {icon}
@@ -55,7 +43,9 @@ const Modal = ({ icon, titulo, onClose, children, isOpen }) => {
           <Botao variante="secundario" aoClicar={onClose}>
             Cancelar
           </Botao>
-          <Botao variante="primario">Adicionar</Botao>
+          <Botao variante="primario" aoClicar={aoClicar}>
+            Adicionar
+          </Botao>
         </ButtonGroup>
       </ModalContainer>
     </ModalOverlay>

@@ -14,7 +14,13 @@ const OrcamentoDiario = () => {
 
   useEffect(() => {
     dispatch(atualizarProgressoMeta());
-  }, [objetivoFinanceiro, rendaMensal, objetivoFinanceiro, dispatch]);
+  }, [
+    orcamentoDiario,
+    objetivoFinanceiro,
+    rendaMensal,
+    objetivoFinanceiro,
+    dispatch,
+  ]);
 
   return (
     <Cartao>

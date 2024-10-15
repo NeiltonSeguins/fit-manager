@@ -8,8 +8,6 @@ const BarraProgresso = () => {
     (state) => state.usuario
   );
 
-  console.log(orcamentoDiario, renda, objetivoFinanceiro);
-
   const progressoMeta = calcularProgressoMeta(
     orcamentoDiario,
     renda,
