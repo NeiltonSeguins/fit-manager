@@ -1,5 +1,5 @@
 import React from "react";
-import { BarraContainer, StyledBarraProgresso } from "../style";
+import { BarraContainer, StyledBarraProgresso, TextoProgresso } from "../style";
 import { useSelector } from "react-redux";
 import { calcularProgressoMeta } from "../../../utils/index";
 
@@ -16,9 +16,8 @@ const BarraProgresso = () => {
 
   return (
     <BarraContainer>
-      <StyledBarraProgresso $progresso={progressoMeta}>
-        {progressoMeta}%
-      </StyledBarraProgresso>
+      <StyledBarraProgresso $progresso={progressoMeta} />
+      <TextoProgresso>{progressoMeta}%</TextoProgresso>
     </BarraContainer>
   );
 };
