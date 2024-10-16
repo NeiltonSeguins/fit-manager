@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { AreaChart } from "./style";
+import { useSelector } from "react-redux";
 
 // Registrar os componentes necessários
 ChartJS.register(
@@ -24,21 +25,40 @@ ChartJS.register(
 );
 
 const BalancoFinanceiro = () => {
+  const movimentacoes = useSelector((state) => state.transacoes.movimentacoes);
+
+  const agruparPorCategoria = () => {
+    return movimentacoes.reduce((valorAcumulado, transacao) => {
+      if (transacao.tipo === "despesa") {
+        valorAcumulado[transacao.categoria] =
+          (valorAcumulado[transacao.categoria] || 0) +
+          parseFloat(transacao.valor);
+      }
+      return valorAcumulado;
+    }, {});
+  };
+
+  const categoriasAgrupadas = agruparPorCategoria();
+
   const data = {
-    labels: ["Entradas", "Saídas", "Balanço"],
+    labels: Object.keys(categoriasAgrupadas),
     datasets: [
       {
-        label: "Calorias",
-        data: [2000, 1500, 500], // Exemplo de dados
+        label: "Gastos por categoria",
+        data: Object.values(categoriasAgrupadas),
         backgroundColor: [
           "rgba(255, 99, 132, 0.2)",
           "rgba(54, 162, 235, 0.2)",
-          "rgba(8, 172, 30, 0.2)",
+          "rgba(255, 206, 86, 0.2)",
+          "rgba(75, 192, 192, 0.2)",
+          "rgba(153, 102, 255, 0.2)",
         ],
         borderColor: [
           "rgba(255, 99, 132, 1)",
           "rgba(54, 162, 235, 1)",
-          "rgba(8, 172, 30, 1)",
+          "rgba(255, 206, 86, 1)",
+          "rgba(75, 192, 192, 1)",
+          "rgba(153, 102, 255, 1)",
         ],
         borderWidth: 1,
       },
@@ -56,7 +76,7 @@ const BalancoFinanceiro = () => {
 
   return (
     <Cartao>
-      <CartaoCabecalho>Balanço financeiro</CartaoCabecalho>
+      <CartaoCabecalho>Gastos por categoria</CartaoCabecalho>
       <CartaoCorpo>
         <AreaChart>
           <Pie data={data} options={options} />
