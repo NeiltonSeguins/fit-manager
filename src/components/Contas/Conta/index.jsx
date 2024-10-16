@@ -6,7 +6,7 @@ const Conta = ({ conta }) => {
     <ItemConta className="conta">
       <TituloConta className="conta-titulo">
         <BankIcon />
-        <h3>{conta.nome}</h3>
+        <h3>{conta.banco}</h3>
       </TituloConta>
       <SaldoConta className="conta-saldo">
         <p>Saldo</p>

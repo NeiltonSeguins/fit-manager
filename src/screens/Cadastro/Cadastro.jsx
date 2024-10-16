@@ -35,7 +35,7 @@ const Cadastro = () => {
     evento.preventDefault();
 
     dispatch(setNomeUsuario(nome));
-    dispatch(atualizarRendaMensal(renda));
+    dispatch(atualizarRendaMensal(parseInt(renda)));
     dispatch(defineObjetivoFinanceiro(objetivoFinanceiro));
 
     navigate("/home");

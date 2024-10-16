@@ -1,5 +1,5 @@
 export const calcularOrcamentoDiario = (rendaMensal) => {
-  return (rendaMensal / 30).toFixed(0);
+  return parseInt(rendaMensal / 30);
 };
 
 export const calcularProgressoMeta = (

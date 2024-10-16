@@ -30,9 +30,13 @@ export const ItemConta = styled.li`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding-bottom: var(--padding-m);
+  padding: var(--padding-m) 0;
   border-bottom: 1px solid var(--cor-neutra-medium);
   color: var(--cor-neutra-light);
+
+  &:nth-child(1) {
+    padding-top: 0;
+  }
 `;
 
 export const TituloConta = styled.div`

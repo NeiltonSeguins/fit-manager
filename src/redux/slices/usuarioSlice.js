@@ -28,6 +28,10 @@ const usuarioSlice = createSlice({
         state.orcamentoDiario -= valor;
       }
     },
+    atualizarSaldoOrcamento: (state, action) => {
+      const saldo = action.payload;
+      state.orcamentoDiario += saldo;
+    },
     defineObjetivoFinanceiro: (state, action) => {
       state.objetivoFinanceiro = action.payload;
     },
@@ -43,5 +47,6 @@ export const {
   atualizarRendaMensal,
   atualizarProgressoMeta,
   atualizarOrcamento,
+  atualizarSaldoOrcamento,
 } = usuarioSlice.actions;
 export default usuarioSlice.reducer;
