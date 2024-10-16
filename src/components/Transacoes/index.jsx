@@ -24,7 +24,6 @@ const Transacoes = () => {
     valor: 0,
     tipo: "",
     categoria: "",
-    conta: "",
     data: "",
   });
 
@@ -136,21 +135,6 @@ const Transacoes = () => {
                     setNovaTransacao({
                       ...novaTransacao,
                       categoria: e.target.value,
-                    })
-                  }
-                />
-              </Fieldset>
-              <Fieldset>
-                <Label htmlFor="contaBancaria">Conta Bancária</Label>
-                <InputText
-                  type="text"
-                  id="contaBancaria"
-                  placeholder="AnyBank"
-                  value={novaTransacao.conta}
-                  onChange={(e) =>
-                    setNovaTransacao({
-                      ...novaTransacao,
-                      conta: e.target.value,
                     })
                   }
                 />
