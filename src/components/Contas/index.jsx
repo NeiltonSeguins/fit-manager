@@ -6,6 +6,7 @@ import { Fieldset, Form, InputText, Label } from "../../screens/Cadastro/style";
 import { useDispatch, useSelector } from "react-redux";
 import { adicionarConta } from "../../redux/slices/transacoesSlice";
 import { atualizarSaldoOrcamento } from "../../redux/slices/usuarioSlice";
+import { geraId } from "../../utils";
 
 const Contas = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const Contas = () => {
   };
 
   const handleAddConta = () => {
-    dispatch(adicionarConta(novaConta));
+    dispatch(adicionarConta({ id: geraId(), ...novaConta }));
     dispatch(atualizarSaldoOrcamento(parseInt(novaConta.saldo)));
     handleCloseModal();
   };
@@ -37,7 +38,7 @@ const Contas = () => {
       <Container>
         <ListaMovimentacoes>
           {contas.map((conta) => (
-            <Conta key={conta.saldo} conta={conta} />
+            <Conta key={conta.id} conta={conta} />
           ))}
         </ListaMovimentacoes>
         <Botao aoClicar={() => handleOpenModal()}>

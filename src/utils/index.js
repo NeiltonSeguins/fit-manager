@@ -22,3 +22,7 @@ export const calcularProgressoMeta = (
       return 0;
   }
 };
+
+export const geraId = () => {
+  return Math.floor(1000 + Math.random() * 9000);
+};

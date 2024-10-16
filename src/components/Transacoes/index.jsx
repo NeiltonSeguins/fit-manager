@@ -13,6 +13,7 @@ import MoneyIcon from "../Icones/MoneyIcon";
 import { useDispatch, useSelector } from "react-redux";
 import { adicionarMovimentacao } from "../../redux/slices/transacoesSlice";
 import { atualizarOrcamento } from "../../redux/slices/usuarioSlice";
+import { geraId } from "../../utils";
 
 const Transacoes = () => {
   const dispatch = useDispatch();
@@ -36,7 +37,7 @@ const Transacoes = () => {
   };
 
   const handleAddTransacao = () => {
-    dispatch(adicionarMovimentacao(novaTransacao));
+    dispatch(adicionarMovimentacao({ id: geraId(), ...novaTransacao }));
     dispatch(
       atualizarOrcamento({
         valor: parseInt(novaTransacao.valor),
@@ -52,7 +53,7 @@ const Transacoes = () => {
       <Container>
         <ListaMovimentacoes>
           {movimentacoes.map((movimentacao) => (
-            <Transacao key={movimentacao.nome} transacao={movimentacao} />
+            <Transacao key={movimentacao.id} transacao={movimentacao} />
           ))}
         </ListaMovimentacoes>
         <Botao aoClicar={() => handleOpenModal()}>
