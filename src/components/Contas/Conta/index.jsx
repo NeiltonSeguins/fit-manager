@@ -1,3 +1,4 @@
+import { formatarMoeda } from "../../../utils";
 import BankIcon from "../../Icones/BankIcon";
 import { ItemConta, SaldoConta, TituloConta } from "../style";
 
@@ -10,7 +11,7 @@ const Conta = ({ conta }) => {
       </TituloConta>
       <SaldoConta className="conta-saldo">
         <p>Saldo</p>
-        <span>R$ {conta.saldo}</span>
+        <span>{formatarMoeda(conta.saldo)}</span>
       </SaldoConta>
     </ItemConta>
   );

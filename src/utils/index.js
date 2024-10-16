@@ -26,3 +26,15 @@ export const calcularProgressoMeta = (
 export const geraId = () => {
   return Math.floor(1000 + Math.random() * 9000);
 };
+
+export const formatarMoeda = (valor) => {
+  return new Intl.NumberFormat("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+  }).format(valor);
+};
+
+export const formatarData = (dataISO) => {
+  const [ano, mes, dia] = dataISO.split("-");
+  return `${dia}/${mes}/${ano}`;
+};

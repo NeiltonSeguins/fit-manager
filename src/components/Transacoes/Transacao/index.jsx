@@ -1,3 +1,4 @@
+import { formatarData, formatarMoeda } from "../../../utils";
 import { ItemTransacao, SaldoTransacao, TituloTransacao } from "../style";
 
 const Transacao = ({ transacao }) => {
@@ -5,10 +6,10 @@ const Transacao = ({ transacao }) => {
     <ItemTransacao>
       <TituloTransacao $tipo={transacao.tipo}>
         <h3>{transacao.nome}</h3>
-        <span>R$ {transacao.valor}</span>
+        <span>{formatarMoeda(transacao.valor)}</span>
       </TituloTransacao>
       <SaldoTransacao className="transacao-saldo">
-        <p>{transacao.data}</p>
+        <p>{formatarData(transacao.data)}</p>
       </SaldoTransacao>
     </ItemTransacao>
   );

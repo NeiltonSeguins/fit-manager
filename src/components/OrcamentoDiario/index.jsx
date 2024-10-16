@@ -5,6 +5,7 @@ import CartaoCorpo from "../Cartao/CartaoCorpo";
 import { Descricao } from "../Cartao/style";
 import { useEffect } from "react";
 import { atualizarProgressoMeta } from "../../redux/slices/usuarioSlice";
+import { formatarMoeda } from "../../utils";
 
 const OrcamentoDiario = () => {
   const dispatch = useDispatch();
@@ -26,7 +27,7 @@ const OrcamentoDiario = () => {
     <Cartao>
       <CartaoCabecalho>Orçamento diário disponível</CartaoCabecalho>
       <CartaoCorpo>
-        <Descricao>R$ {orcamentoDiario}</Descricao>
+        <Descricao>{formatarMoeda(orcamentoDiario)}</Descricao>
       </CartaoCorpo>
     </Cartao>
   );
