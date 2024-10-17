@@ -1,20 +1,19 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import {
   Section,
   Container,
   Title,
   Description,
-  Form,
-  Fieldset,
-  Label,
-  InputText,
-  RadioGroup,
-  RadioInput,
   Illustration,
   SectionWrapper,
-} from "./style";
-import Botao from "../../components/Botao";
-import ilustracao from "../../assets/ilustracao-cadastro.png";
+} from "./style.js";
+import CampoTexto from "@components/CampoTexto";
+import Botao from "@components/Botao";
+import Label from "@components/Label";
+import Fieldset from "@components/Fieldset";
+import { RadioGroup, RadioInput } from "@components/BotaoRadio/BotaoRadio.js";
+import Form from "@components/Form/Form.js";
+import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
@@ -54,7 +53,7 @@ const Cadastro = () => {
           <Form>
             <Fieldset>
               <Label htmlFor="nome">Nome</Label>
-              <InputText
+              <CampoTexto
                 type="text"
                 name="nome"
                 value={nome}
@@ -63,7 +62,7 @@ const Cadastro = () => {
             </Fieldset>
             <Fieldset>
               <Label htmlFor="renda">Renda mensal total</Label>
-              <InputText
+              <CampoTexto
                 type="text"
                 name="renda"
                 value={renda}
