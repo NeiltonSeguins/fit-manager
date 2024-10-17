@@ -15,6 +15,11 @@ import { adicionarMovimentacao } from "../../redux/slices/transacoesSlice";
 import { atualizarOrcamento } from "../../redux/slices/usuarioSlice";
 import { v4 as uuidv4 } from "uuid";
 
+export const formataData = (dataISO) => {
+  const [ano, mes, dia] = dataISO.split("-");
+  return `${dia}/${mes}/${ano}`;
+};
+
 const Transacoes = () => {
   const dispatch = useDispatch();
   const movimentacoes = useSelector((state) => state.transacoes.movimentacoes);
@@ -121,7 +126,10 @@ const Transacoes = () => {
                   placeholder="dd/mm/aaaa"
                   value={novaTransacao.data}
                   onChange={(e) =>
-                    setNovaTransacao({ ...novaTransacao, data: e.target.value })
+                    setNovaTransacao({
+                      ...novaTransacao,
+                      data: e.target.value,
+                    })
                   }
                 />
               </Fieldset>

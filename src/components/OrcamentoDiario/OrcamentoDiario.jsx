@@ -5,7 +5,12 @@ import CartaoCorpo from "../Cartao/CartaoCorpo/CartaoCorpo";
 import { Descricao } from "../Cartao";
 import { useEffect } from "react";
 import { atualizarProgressoMeta } from "../../redux/slices/usuarioSlice";
-import { formatarMoeda } from "../../utils";
+
+const formatador = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
 
 const OrcamentoDiario = () => {
   const dispatch = useDispatch();
@@ -27,7 +32,7 @@ const OrcamentoDiario = () => {
     <Cartao>
       <CartaoCabecalho>Orçamento diário disponível</CartaoCabecalho>
       <CartaoCorpo>
-        <Descricao>{formatarMoeda(orcamentoDiario)}</Descricao>
+        <Descricao>{formatador.format(orcamentoDiario)}</Descricao>
       </CartaoCorpo>
     </Cartao>
   );

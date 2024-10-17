@@ -1,5 +1,4 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { calcularOrcamentoDiario } from "../../utils/index";
 
 const initialState = {
   nome: "",
@@ -17,8 +16,9 @@ const usuarioSlice = createSlice({
       state.nome = action.payload;
     },
     atualizarRendaMensal: (state, action) => {
-      state.renda = action.payload;
-      state.orcamentoDiario = calcularOrcamentoDiario(action.payload);
+      const renda = action.payload;
+      state.renda = renda;
+      state.orcamentoDiario = Math.floor(renda / 30);
     },
     atualizarOrcamento: (state, action) => {
       const { valor, tipo } = action.payload;

@@ -12,6 +12,7 @@ import {
 } from "chart.js";
 import { Pie } from "react-chartjs-2";
 import { useSelector } from "react-redux";
+import { getGastosPorCategoria } from "src/redux/selectors/gastosPorCategoriaSelector";
 import styled from "styled-components";
 
 // Registrar os componentes necessários
@@ -31,20 +32,7 @@ export const AreaChart = styled.div`
 `;
 
 const BalancoFinanceiro = () => {
-  const movimentacoes = useSelector((state) => state.transacoes.movimentacoes);
-
-  const agruparPorCategoria = () => {
-    return movimentacoes.reduce((valorAcumulado, transacao) => {
-      if (transacao.tipo === "despesa") {
-        valorAcumulado[transacao.categoria] =
-          (valorAcumulado[transacao.categoria] || 0) +
-          parseFloat(transacao.valor);
-      }
-      return valorAcumulado;
-    }, {});
-  };
-
-  const categoriasAgrupadas = agruparPorCategoria();
+  const categoriasAgrupadas = useSelector(getGastosPorCategoria);
 
   const data = {
     labels: Object.keys(categoriasAgrupadas),

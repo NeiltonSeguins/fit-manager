@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { formatarMoeda } from "../../../utils";
 import BankIcon from "@components/Icones/BankIcon/BankIcon";
 
 export const ItemConta = styled.li`
@@ -33,6 +32,12 @@ export const SaldoConta = styled.div`
   }
 `;
 
+const formatador = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
+
 const Conta = ({ conta }) => {
   return (
     <ItemConta className="conta">
@@ -42,7 +47,7 @@ const Conta = ({ conta }) => {
       </TituloConta>
       <SaldoConta className="conta-saldo">
         <p>Saldo</p>
-        <span>{formatarMoeda(conta.saldo)}</span>
+        <span>{formatador.format(conta.saldo)}</span>
       </SaldoConta>
     </ItemConta>
   );

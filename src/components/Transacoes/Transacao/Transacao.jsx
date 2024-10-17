@@ -1,4 +1,3 @@
-import { formatarData, formatarMoeda } from "../../../utils";
 import styled from "styled-components";
 
 export const ItemTransacao = styled.li`
@@ -37,15 +36,26 @@ export const SaldoTransacao = styled.div`
   }
 `;
 
+const formatador = new Intl.NumberFormat("pt-BR", {
+  style: "currency",
+  currency: "BRL",
+  minimumFractionDigits: 2,
+});
+
+export const formataData = (dataISO) => {
+  const [ano, mes, dia] = dataISO.split("-");
+  return `${dia}/${mes}/${ano}`;
+};
+
 const Transacao = ({ transacao }) => {
   return (
     <ItemTransacao>
       <TituloTransacao $tipo={transacao.tipo}>
         <h3>{transacao.nome}</h3>
-        <span>{formatarMoeda(transacao.valor)}</span>
+        <span>{formatador.format(transacao.valor)}</span>
       </TituloTransacao>
       <SaldoTransacao className="transacao-saldo">
-        <p>{formatarData(transacao.data)}</p>
+        <p>{formataData(transacao.data)}</p>
       </SaldoTransacao>
     </ItemTransacao>
   );
