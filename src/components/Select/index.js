@@ -1,1 +1,1 @@
-export { SelectGroup, SelectOption } from "./Select";
+export { SelectGroup, SelectOption } from "./Select.jsx";

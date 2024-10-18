@@ -1,12 +1,8 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+const Cartao = styled.div`
   flex: 1;
   text-align: center;
 `;
-
-const Cartao = ({ children }) => {
-  return <Container>{children}</Container>;
-};
 
 export default Cartao;

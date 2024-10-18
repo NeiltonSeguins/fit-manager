@@ -1,1 +1,1 @@
-export { default } from "./CampoTexto";
+export { default } from "./CampoTexto.jsx";

@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   transacoes: [],
@@ -9,7 +10,8 @@ const transacoesSlice = createSlice({
   initialState,
   reducers: {
     adicionarTransacao: (state, action) => {
-      state.transacoes.push(action.payload);
+      const novaTransacao = action.payload;
+      state.transacoes.push({ id: uuidv4(), ...novaTransacao });
     },
   },
 });

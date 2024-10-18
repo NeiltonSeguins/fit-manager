@@ -12,7 +12,6 @@ import { WalletIcon } from "@components/Icones";
 import CartaoCorpo from "@components/Cartao/CartaoCorpo/CartaoCorpo";
 import { useDispatch, useSelector } from "react-redux";
 import { atualizarSaldoOrcamento } from "../../redux/slices/usuarioSlice";
-import { v4 as uuidv4 } from "uuid";
 import { adicionarConta } from "src/redux/slices/contasSlice";
 
 export const Container = styled(CartaoCorpo)`
@@ -59,7 +58,7 @@ const Contas = () => {
   };
 
   const handleAddConta = () => {
-    dispatch(adicionarConta({ id: uuidv4(), ...novaConta }));
+    dispatch(adicionarConta(novaConta));
     dispatch(atualizarSaldoOrcamento(parseInt(novaConta.saldo)));
     handleCloseModal();
   };
@@ -73,14 +72,14 @@ const Contas = () => {
             <Conta key={conta.id} conta={conta} />
           ))}
         </ListaMovimentacoes>
-        <Botao aoClicar={() => handleOpenModal()}>
+        <Botao $variante="neutro" onClick={() => handleOpenModal()}>
           <WalletIcon />
           Adicionar conta
         </Botao>
         {isModalOpen && (
           <Modal
-            onClose={() => handleCloseModal()}
-            isOpen={isModalOpen}
+            aoFechar={() => handleCloseModal()}
+            estaAberta={isModalOpen}
             aoClicar={() => handleAddConta()}
             titulo="Adicionar conta bancária"
             icon={<WalletIcon />}

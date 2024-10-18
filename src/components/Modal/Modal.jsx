@@ -1,4 +1,4 @@
-import React, { useCallback, useEffect } from "react";
+import React, { useCallback, useEffect, useRef } from "react";
 import {
   ButtonGroup,
   CloseButton,
@@ -8,42 +8,43 @@ import {
 } from "./Modal.style";
 import Botao from "@components/Botao";
 
-const Modal = ({ icon, titulo, onClose, children, isOpen, aoClicar }) => {
-  const escutadorTecla = useCallback(
-    (evento) => {
-      if (evento.key === "Escape") {
-        onClose();
-      }
-    },
-    [onClose]
-  );
+const Modal = ({ icon, titulo, aoFechar, children, estaAberta, aoClicar }) => {
+  const dialogRef = useRef(null);
 
   useEffect(() => {
-    if (isOpen) {
-      document.addEventListener("keydown", escutadorTecla);
+    const dialogNode = dialogRef.current;
+
+    if (estaAberta) {
+      dialogNode.showModal();
+    } else {
+      dialogNode.close();
     }
 
+    const handleClose = () => aoFechar();
+
+    dialogNode.addEventListener("close", handleClose);
+
     return () => {
-      document.removeEventListener("keydown", escutadorTecla);
+      dialogNode.removeEventListener("close", handleClose);
     };
-  }, [isOpen, escutadorTecla]);
+  }, [estaAberta, aoFechar]);
 
   return (
     <ModalOverlay>
-      <ModalContainer open={isOpen} onClose={onclose}>
+      <ModalContainer aoFechar={aoFechar} ref={dialogRef}>
         <ModalHeader>
           <div>
             {icon}
             {titulo}
           </div>
-          <CloseButton onClick={onClose}>x</CloseButton>
+          <CloseButton onClick={aoFechar}>x</CloseButton>
         </ModalHeader>
         {children}
         <ButtonGroup>
-          <Botao variante="secundario" aoClicar={onClose}>
+          <Botao $variante="secundario" onClick={aoFechar}>
             Cancelar
           </Botao>
-          <Botao variante="primario" aoClicar={aoClicar}>
+          <Botao $variante="primario" onClick={aoClicar}>
             Adicionar
           </Botao>
         </ButtonGroup>

@@ -11,8 +11,8 @@ import CampoTexto from "@components/CampoTexto";
 import Botao from "@components/Botao";
 import Label from "@components/Label";
 import Fieldset from "@components/Fieldset";
-import { RadioGroup, RadioInput } from "@components/BotaoRadio/BotaoRadio.js";
-import Form from "@components/Form/Form.js";
+import { RadioGroup, RadioInput } from "@components/BotaoRadio";
+import Form from "@components/Form/Form";
 import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
@@ -106,7 +106,7 @@ const Cadastro = () => {
               </RadioGroup>
             </Fieldset>
           </Form>
-          <Botao variante="primario" aoClicar={aoSubmeterFormulario}>
+          <Botao $variante="primario" onClick={aoSubmeterFormulario}>
             Ir para o app
           </Botao>
         </Container>

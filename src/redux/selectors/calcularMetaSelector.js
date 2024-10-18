@@ -17,9 +17,9 @@ export const calcularMetaSelector = createSelector(
     const meta = metas[objetivoFinanceiro] || 0;
 
     if (objetivoFinanceiro === "controlar-gastos") {
-      return ((meta - orcamentoDiario) / meta) * 100;
+      return (((meta - orcamentoDiario) / meta) * 100).toFixed(2);
     }
 
-    return meta ? (orcamentoDiario / meta) * 100 : 0;
+    return meta ? ((orcamentoDiario / meta) * 100).toFixed(2) : 0;
   }
 );

@@ -40,12 +40,12 @@ const formatador = new Intl.NumberFormat("pt-BR", {
 
 const Conta = ({ conta }) => {
   return (
-    <ItemConta className="conta">
-      <TituloConta className="conta-titulo">
+    <ItemConta>
+      <TituloConta>
         <BankIcon />
         <h3>{conta.banco}</h3>
       </TituloConta>
-      <SaldoConta className="conta-saldo">
+      <SaldoConta>
         <p>Saldo</p>
         <span>{formatador.format(conta.saldo)}</span>
       </SaldoConta>

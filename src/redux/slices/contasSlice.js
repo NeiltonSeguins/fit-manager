@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { v4 as uuidv4 } from "uuid";
 
 const initialState = {
   contas: [],
@@ -9,7 +10,8 @@ const contasSlice = createSlice({
   initialState,
   reducers: {
     adicionarConta: (state, action) => {
-      state.contas.push(action.payload);
+      const novaConta = action.payload;
+      state.contas.push({ id: uuidv4(), ...novaConta });
     },
   },
 });

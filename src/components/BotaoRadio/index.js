@@ -1,1 +1,1 @@
-export { RadioGroup, RadioInput } from "./BotaoRadio";
+export { RadioGroup, RadioInput } from "./BotaoRadio.jsx";
