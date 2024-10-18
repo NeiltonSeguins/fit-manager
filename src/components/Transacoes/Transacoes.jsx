@@ -11,7 +11,7 @@ import Form from "@components/Form";
 import Fieldset from "@components/Fieldset";
 import Label from "@components/Label";
 import { useDispatch, useSelector } from "react-redux";
-import { adicionarMovimentacao } from "../../redux/slices/transacoesSlice";
+import { adicionarTransacao } from "../../redux/slices/transacoesSlice";
 import { atualizarOrcamento } from "../../redux/slices/usuarioSlice";
 import { v4 as uuidv4 } from "uuid";
 
@@ -22,7 +22,7 @@ export const formataData = (dataISO) => {
 
 const Transacoes = () => {
   const dispatch = useDispatch();
-  const movimentacoes = useSelector((state) => state.transacoes.movimentacoes);
+  const transacoes = useSelector((state) => state.transacoes.transacoes);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [novaTransacao, setNovaTransacao] = useState({
@@ -42,10 +42,10 @@ const Transacoes = () => {
   };
 
   const handleAddTransacao = () => {
-    dispatch(adicionarMovimentacao({ id: uuidv4(), ...novaTransacao }));
+    dispatch(adicionarTransacao({ id: uuidv4(), ...novaTransacao }));
     dispatch(
       atualizarOrcamento({
-        valor: parseInt(novaTransacao.valor),
+        valor: novaTransacao.valor,
         tipo: novaTransacao.tipo,
       })
     );
@@ -57,8 +57,8 @@ const Transacoes = () => {
       <CartaoCabecalho>Movimentação financeira</CartaoCabecalho>
       <Container>
         <ListaMovimentacoes>
-          {movimentacoes.map((movimentacao) => (
-            <Transacao key={movimentacao.id} transacao={movimentacao} />
+          {transacoes.map((transacao) => (
+            <Transacao key={transacao.id} transacao={transacao} />
           ))}
         </ListaMovimentacoes>
         <Botao aoClicar={() => handleOpenModal()}>

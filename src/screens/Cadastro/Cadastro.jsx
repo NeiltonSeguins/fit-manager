@@ -17,8 +17,7 @@ import ilustracao from "@assets/images/ilustracao-cadastro.png";
 import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
-  setNomeUsuario,
-  defineObjetivoFinanceiro,
+  defineUsuario,
   atualizarRendaMensal,
 } from "../../redux/slices/usuarioSlice";
 
@@ -33,9 +32,8 @@ const Cadastro = () => {
   const aoSubmeterFormulario = (evento) => {
     evento.preventDefault();
 
-    dispatch(setNomeUsuario(nome));
-    dispatch(atualizarRendaMensal(parseInt(renda)));
-    dispatch(defineObjetivoFinanceiro(objetivoFinanceiro));
+    dispatch(defineUsuario({ nome, renda, objetivoFinanceiro }));
+    dispatch(atualizarRendaMensal(renda));
 
     navigate("/home");
   };

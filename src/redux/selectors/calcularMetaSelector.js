@@ -8,19 +8,18 @@ export const getObjetivoFinanceiro = (state) =>
 export const calcularMetaSelector = createSelector(
   [getOrcamentoDiario, getRendaMensal, getObjetivoFinanceiro],
   (orcamentoDiario, rendaMensal, objetivoFinanceiro) => {
-    let meta = 0;
-    switch (objetivoFinanceiro) {
-      case "economizar":
-        meta = rendaMensal * 0.2;
-        return ((orcamentoDiario / meta) * 100).toFixed(0);
-      case "investir":
-        meta = rendaMensal * 0.15;
-        return ((orcamentoDiario / meta) * 100).toFixed(0);
-      case "controlar-gastos":
-        meta = rendaMensal * 0.8;
-        return (((meta - orcamentoDiario) / meta) * 100).toFixed(0);
-      default:
-        return 0;
+    const metas = {
+      economizar: rendaMensal * 0.2,
+      investir: rendaMensal * 0.15,
+      "controlar-gastos": rendaMensal * 0.8,
+    };
+
+    const meta = metas[objetivoFinanceiro] || 0;
+
+    if (objetivoFinanceiro === "controlar-gastos") {
+      return ((meta - orcamentoDiario) / meta) * 100;
     }
+
+    return meta ? (orcamentoDiario / meta) * 100 : 0;
   }
 );

@@ -1,17 +1,17 @@
 import { createSelector } from "@reduxjs/toolkit";
 
-const getMovimentacoes = (state) => state.transacoes.movimentacoes;
+const getTransacoes = (state) => state.transacoes.transacoes;
 
 export const getGastosPorCategoria = createSelector(
-  [getMovimentacoes],
+  [getTransacoes],
   (movimentacoes) => {
-    return movimentacoes.reduce((valorAcumulado, transacao) => {
-      if (transacao.tipo === "despesa") {
+    return movimentacoes
+      .filter((transacao) => transacao.tipo === "despesa")
+      .reduce((valorAcumulado, transacao) => {
         valorAcumulado[transacao.categoria] =
           (valorAcumulado[transacao.categoria] || 0) +
           parseFloat(transacao.valor);
-      }
-      return valorAcumulado;
-    }, {});
+        return valorAcumulado;
+      }, {});
   }
 );

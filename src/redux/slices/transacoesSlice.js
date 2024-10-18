@@ -1,23 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-  movimentacoes: [],
-  contas: [],
+  transacoes: [],
 };
 
 const transacoesSlice = createSlice({
   name: "transacoes",
   initialState,
   reducers: {
-    adicionarMovimentacao: (state, action) => {
-      state.movimentacoes.push(action.payload);
-    },
-    adicionarConta: (state, action) => {
-      state.contas.push(action.payload);
+    adicionarTransacao: (state, action) => {
+      state.transacoes.push(action.payload);
     },
   },
 });
 
-export const { adicionarMovimentacao, adicionarConta } =
-  transacoesSlice.actions;
+export const { adicionarTransacao } = transacoesSlice.actions;
 export default transacoesSlice.reducer;

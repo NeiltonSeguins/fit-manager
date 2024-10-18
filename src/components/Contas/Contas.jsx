@@ -11,9 +11,9 @@ import Fieldset from "@components/Fieldset";
 import { WalletIcon } from "@components/Icones";
 import CartaoCorpo from "@components/Cartao/CartaoCorpo/CartaoCorpo";
 import { useDispatch, useSelector } from "react-redux";
-import { adicionarConta } from "../../redux/slices/transacoesSlice";
 import { atualizarSaldoOrcamento } from "../../redux/slices/usuarioSlice";
 import { v4 as uuidv4 } from "uuid";
+import { adicionarConta } from "src/redux/slices/contasSlice";
 
 export const Container = styled(CartaoCorpo)`
   padding: var(--padding-l) var(--padding-m);
@@ -42,7 +42,7 @@ export const ListaMovimentacoes = styled.ul`
 
 const Contas = () => {
   const dispatch = useDispatch();
-  const contas = useSelector((state) => state.transacoes.contas);
+  const contas = useSelector((state) => state.contas.contas);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [novaConta, setNovaConta] = useState({

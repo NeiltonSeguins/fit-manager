@@ -12,28 +12,29 @@ const usuarioSlice = createSlice({
   name: "usuario",
   initialState,
   reducers: {
-    setNomeUsuario: (state, action) => {
-      state.nome = action.payload;
+    defineUsuario: (state, action) => {
+      const { nome, renda, objetivoFinanceiro } = action.payload;
+      state.nome = nome;
+      state.renda = renda;
+      state.objetivoFinanceiro = objetivoFinanceiro;
     },
     atualizarRendaMensal: (state, action) => {
       const renda = action.payload;
-      state.renda = renda;
+      state.renda = parseFloat(renda);
       state.orcamentoDiario = Math.floor(renda / 30);
     },
     atualizarOrcamento: (state, action) => {
-      const { valor, tipo } = action.payload;
-      if (tipo === "receita") {
-        state.orcamentoDiario += valor;
-      } else if (tipo === "despesa") {
-        state.orcamentoDiario -= valor;
+      let valor = Math.abs(action.payload.valor);
+
+      if (action.payload.tipo != "receita") {
+        valor = -valor;
       }
+
+      state.orcamentoDiario += parseFloat(valor);
     },
     atualizarSaldoOrcamento: (state, action) => {
       const saldo = action.payload;
       state.orcamentoDiario += saldo;
-    },
-    defineObjetivoFinanceiro: (state, action) => {
-      state.objetivoFinanceiro = action.payload;
     },
     atualizarProgressoMeta: (state, action) => {
       state.progressoMeta = action.payload;
@@ -42,9 +43,10 @@ const usuarioSlice = createSlice({
 });
 
 export const {
-  setNomeUsuario,
-  defineObjetivoFinanceiro,
+  defineUsuario,
   atualizarRendaMensal,
+  atualizarDespesa,
+  atualizarReceita,
   atualizarProgressoMeta,
   atualizarOrcamento,
   atualizarSaldoOrcamento,
