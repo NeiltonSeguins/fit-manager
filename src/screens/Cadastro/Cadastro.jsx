@@ -18,7 +18,7 @@ import { useDispatch } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import {
   defineUsuario,
-  atualizarRendaMensal,
+  defineOrcamentoDiario,
 } from "../../redux/slices/usuarioSlice";
 
 const Cadastro = () => {
@@ -33,7 +33,7 @@ const Cadastro = () => {
     evento.preventDefault();
 
     dispatch(defineUsuario({ nome, renda, objetivoFinanceiro }));
-    dispatch(atualizarRendaMensal(renda));
+    dispatch(defineOrcamentoDiario(renda));
 
     navigate("/home");
   };

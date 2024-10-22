@@ -4,7 +4,6 @@ const initialState = {
   nome: "",
   renda: 0,
   objetivoFinanceiro: "",
-  progressoMeta: 0,
   orcamentoDiario: 0,
 };
 
@@ -18,7 +17,7 @@ const usuarioSlice = createSlice({
       state.renda = renda;
       state.objetivoFinanceiro = objetivoFinanceiro;
     },
-    atualizarRendaMensal: (state, action) => {
+    defineOrcamentoDiario: (state, action) => {
       const renda = action.payload;
       state.renda = parseFloat(renda);
       state.orcamentoDiario = Math.floor(renda / 30);
@@ -36,18 +35,14 @@ const usuarioSlice = createSlice({
       const saldo = action.payload;
       state.orcamentoDiario += saldo;
     },
-    atualizarProgressoMeta: (state, action) => {
-      state.progressoMeta = action.payload;
-    },
   },
 });
 
 export const {
   defineUsuario,
-  atualizarRendaMensal,
+  defineOrcamentoDiario,
   atualizarDespesa,
   atualizarReceita,
-  atualizarProgressoMeta,
   atualizarOrcamento,
   atualizarSaldoOrcamento,
 } = usuarioSlice.actions;

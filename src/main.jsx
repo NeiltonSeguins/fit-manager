@@ -23,7 +23,7 @@ createRoot(document.getElementById("root")).render(
   <StrictMode>
     <GlobalStyle />
     <Provider store={store}>
-      <PersistGate loading={null} persistor={persistor}>
+      <PersistGate persistor={persistor}>
         <RouterProvider router={router} />
       </PersistGate>
     </Provider>
