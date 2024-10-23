@@ -20,7 +20,7 @@ const TransacaoModal = ({ isOpen, onCloseModal }) => {
     data: "",
   });
 
-  const handleAddTransacao = () => {
+  const aoSubmeterFormModal = () => {
     dispatch(adicionarTransacao(novaTransacao));
     dispatch(
       atualizarOrcamento({
@@ -37,7 +37,7 @@ const TransacaoModal = ({ isOpen, onCloseModal }) => {
       titulo="Adicionar transação"
       estaAberta={isOpen}
       icon={<MoneyIcon />}
-      aoClicar={() => handleAddTransacao()}
+      aoClicar={() => aoSubmeterFormModal()}
     >
       <Form>
         <Fieldset>

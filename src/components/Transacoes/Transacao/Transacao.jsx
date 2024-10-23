@@ -42,7 +42,7 @@ const formatador = new Intl.NumberFormat("pt-BR", {
   minimumFractionDigits: 2,
 });
 
-export const formataData = (dataISO) => {
+const formataData = (dataISO) => {
   const [ano, mes, dia] = dataISO.split("-");
   return `${dia}/${mes}/${ano}`;
 };
@@ -54,7 +54,7 @@ const Transacao = ({ transacao }) => {
         <h3>{transacao.nome}</h3>
         <span>{formatador.format(transacao.valor)}</span>
       </TituloTransacao>
-      <SaldoTransacao className="transacao-saldo">
+      <SaldoTransacao>
         <p>{formataData(transacao.data)}</p>
       </SaldoTransacao>
     </ItemTransacao>

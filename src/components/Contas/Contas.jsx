@@ -57,9 +57,9 @@ const Contas = () => {
     setIsModalOpen(false);
   };
 
-  const handleAddConta = () => {
+  const aoAdicionarConta = () => {
     dispatch(adicionarConta(novaConta));
-    dispatch(atualizarSaldoOrcamento(parseInt(novaConta.saldo)));
+    dispatch(atualizarSaldoOrcamento(novaConta.saldo));
     handleCloseModal();
   };
 
@@ -80,7 +80,7 @@ const Contas = () => {
           <Modal
             aoFechar={() => handleCloseModal()}
             estaAberta={isModalOpen}
-            aoClicar={() => handleAddConta()}
+            aoClicar={() => aoAdicionarConta()}
             titulo="Adicionar conta bancária"
             icon={<WalletIcon />}
           >

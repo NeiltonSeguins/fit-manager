@@ -33,7 +33,7 @@ const usuarioSlice = createSlice({
     },
     atualizarSaldoOrcamento: (state, action) => {
       const saldo = action.payload;
-      state.orcamentoDiario += saldo;
+      state.orcamentoDiario += parseFloat(saldo);
     },
   },
 });
